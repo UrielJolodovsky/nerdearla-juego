@@ -1,0 +1,9 @@
+CREATE TABLE challenge(
+    column1 A 
+    column2 B
+)
+
+CREATE TABLE conectado(
+    column1 A 
+    column2 B
+)
