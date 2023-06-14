@@ -2,18 +2,29 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+const URI = "http://localhost:9000/api/challenge"
 
-  
-   const challenge = async () =>{
+export default function Home() {
+  const [data, setData] = useState([])
+
+  useEffect(() => {
+    challenge()
+    console.log(data)
+  }, [data])
+
+  const challenge = async () => {
     try {
     console.log('Nuevo challenge')
-    const res = await fetch('/challenge').then(res => res.json())
-    const data = res.json()
-    console.log(data)
+    await axios.get(URI).then(res => {
+      console.log("holaaa")
+      setData(res.data)
+      console.log(res.data)
+    })
   } catch (error) {
     console.log(error)
   }
