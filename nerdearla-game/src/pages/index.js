@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const URI = "http://localhost:9000/api/challenge"
+const URIJOLO = "http://localhost:9000/challenge"
 
 export default function Home() {
   const [data, setData] = useState([])
@@ -20,7 +20,7 @@ export default function Home() {
   const challenge = async () => {
     try {
     console.log('Nuevo challenge')
-    await axios.get(URI).then(res => {
+    await axios.get(URIJOLO).then(res => {
       console.log("holaaa")
       setData(res.data)
       console.log(res.data)
@@ -29,6 +29,15 @@ export default function Home() {
     console.log(error)
   }
 }
+// CREATE TABLE challenge(
+//   column1 A 
+//   column2 B
+// )
+
+// CREATE TABLE conectado(
+//   column1 A 
+//   column2 B
+// )
 
   return (
     <>
