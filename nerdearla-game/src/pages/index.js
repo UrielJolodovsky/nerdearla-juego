@@ -13,7 +13,6 @@ export default function Home() {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    challenge()
     console.log(data)
   }, [data])
 

@@ -1,9 +1,11 @@
 CREATE TABLE challenge(
-    column1 A 
-    column2 B
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    A INTEGER NOT NULL,
+    B INTEGER NOT NULL
 )
 
 CREATE TABLE conectado(
-    column1 A 
-    column2 B
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    A INTEGER NOT NULL,
+    B INTEGER NOT NULL,
 )

@@ -12,7 +12,8 @@ export const GetChallenges = async (req, res) => {
     let numeros1 = []
     let numeros2 = []
     console.log("Tenemos los arrays")
-    var stmt = db.prepare("INSERT INTO challenge VALUES (?,?)");
+    var stmt = db.prepare("INSERT INTO challenge (A, B) VALUES (?,?)");
+    const parameters = 'INSERT INTO challenge (A, B) VALUES (?,?)'
     for (var i = 0; i < 10; i++) {
         var j = between(1,24)
         while (numeros1.includes(j)) {
@@ -27,8 +28,16 @@ export const GetChallenges = async (req, res) => {
         }
         numeros2.push(k)
 
-        stmt.run(numeros1[i], numeros2[i]);
-        console.log("Fila insertada")
+        //stmt.run(numeros1[i], numeros2[i]);
+        db.run(parameters, [numeros1[i], numeros2[i]], (err, row) => {
+            if(err) {
+                console.log(err)
+                return res.json({message: 'Error'})
+            }
+            else {
+                console.log("Fila insertada", row)
+            }
+        })
     }
 
     stmt.finalize();
